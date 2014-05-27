@@ -17,7 +17,16 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="notes">
-    <h4>Notes</h4>
+    <div class="row panel">
+      <h4>Notes</h4>
+    </div>
+    <div class="row panel callout">
+      <ol>
+        {{#each}}
+          <li>{{title}}</li>
+        {{/each}}
+      </ol>
+    </div>
   </script>
 
 </body>
