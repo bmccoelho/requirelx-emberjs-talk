@@ -23,7 +23,9 @@
     <div class="row panel callout">
       <ol>
         {{#each}}
-          <li>{{title}}</li>
+          <li>
+            {{link-to title "note" this}}
+          </li>
         {{/each}}
       </ol>
     </div>
