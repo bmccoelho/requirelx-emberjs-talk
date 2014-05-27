@@ -13,7 +13,8 @@ App.Note.FIXTURES = [
 
 App.Router.map(function() {
   this.resource("notes", function() {
-    this.resource("note", { path: '/:note_id' })
+    this.resource("note", { path: '/:note_id' }),
+    this.route("new")
   });
 });
 
