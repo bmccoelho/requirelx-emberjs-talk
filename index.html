@@ -20,15 +20,28 @@
     <div class="row panel">
       <h4>Notes</h4>
     </div>
-    <div class="row panel callout">
-      <ol>
-        {{#each}}
-          <li>
-            {{link-to title "note" this}}
-          </li>
-        {{/each}}
-      </ol>
+    <div class="row">
+      <div class="medium-3 columns panel">
+        <ol>
+          {{#each}}
+            <li>
+              {{link-to title "note" this}}
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+      <div class="medium-8 columns panel callout">
+        {{outlet}}
+      </div>
     </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="note">
+    <h4 class="subheader"> {{title}} </h4>
+    <blockquote>
+      <p> {{body}} </p>
+    </blockquote>
+    </ul>
   </script>
 
 </body>
