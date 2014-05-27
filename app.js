@@ -23,3 +23,23 @@ App.NotesRoute = Ember.Route.extend({
     return this.store.find('note');
   }
 });
+
+App.NotesNewController = Ember.ObjectController.extend({
+  actions: {
+    createNote: function () {
+      var title = this.get("newTitle");
+      var body = this.get("newBody");
+
+      console.log("title: ", this);
+      console.log("body: ", body);
+
+      var note = this.store.createRecord('note', {
+        title: title,
+        body: body
+      });
+
+      note.save();
+    }
+  }
+});
+

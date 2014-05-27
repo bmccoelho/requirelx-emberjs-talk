@@ -47,7 +47,12 @@
     <blockquote>
       <p> {{body}} </p>
     </blockquote>
-    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="notes/new">
+    title: {{view Ember.TextField valueBinding="newTitle"}}
+    {{view Ember.TextArea valueBinding="newBody"}}
+    <button class="tiny radius" {{action "createNote"}}>create</button>
   </script>
 
 </body>
