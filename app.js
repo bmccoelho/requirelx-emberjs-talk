@@ -59,3 +59,12 @@ App.NoteController = Ember.ObjectController.extend({
     }
   }
 });
+
+Ember.Handlebars.registerBoundHelper('displayRemaining', function(value) {
+  var cssClass = 'secondary';
+  var remaining = 140 - value;
+  if (remaining < 0) {
+    cssClass = 'alert';
+  }
+  return new Handlebars.SafeString('<span class="radius ' + cssClass + ' label">' + remaining + '</span>');
+});

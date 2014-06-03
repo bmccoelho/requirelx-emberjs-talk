@@ -46,6 +46,7 @@
     <h4 class="subheader"> {{title}} </h4>
     {{#if isEditing}}
       {{view Ember.TextArea valueBinding="body"}}
+      {{displayRemaining bodyLength}}
       <br>
       <button class="tiny radius" {{action "updateNote"}}>update</button>
     {{else}}
