@@ -27,8 +27,6 @@ App.NotesRoute = Ember.Route.extend({
 App.NotesNewController = Ember.ObjectController.extend({
   actions: {
     createNote: function () {
-      console.log("title: ", this);
-      console.log("body: ", body);
       var title = this.get('newTitle');
       var body = this.get('newBody');
 
