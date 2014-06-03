@@ -35,6 +35,9 @@ App.NotesNewController = Ember.ObjectController.extend({
         body: body
       });
 
+      this.set('newTitle', '');
+      this.set('newBody', '');
+
       note.save();
     }
   }
