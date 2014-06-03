@@ -43,3 +43,19 @@ App.NotesNewController = Ember.ObjectController.extend({
   }
 });
 
+App.NoteController = Ember.ObjectController.extend({
+  bodyLength: function() {
+    var body = this.get('content').get('body');
+    return (body.length);
+  }.property('model.body'),
+
+  actions: {
+    editNote: function() {
+      this.set('isEditing', true);
+    },
+    updateNote: function () {
+      this.set('isEditing', false);
+      this.get('model').save();
+    }
+  }
+});
