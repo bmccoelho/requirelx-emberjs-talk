@@ -44,6 +44,11 @@ App.NotesNewController = Ember.ObjectController.extend({
 });
 
 App.NoteController = Ember.ObjectController.extend({
+  bodyRemaining: function() {
+    var body = this.get('content').get('body');
+    return (140 - body.length);
+  }.property('model.body'),
+
   actions: {
     editNote: function() {
       this.set('isEditing', true);
@@ -53,4 +58,12 @@ App.NoteController = Ember.ObjectController.extend({
       this.get('model').save();
     }
   }
+});
+
+Ember.Handlebars.registerBoundHelper('displayRemaining', function(value) {
+  var cssClass = 'secondary';
+  if (value < 0) {
+    cssClass = 'alert';
+  }
+  return new Handlebars.SafeString('<span class="radius ' + cssClass + ' label">' + value + '</span>');
 });

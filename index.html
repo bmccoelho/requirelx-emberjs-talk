@@ -46,6 +46,7 @@
     {{#if isEditing}}
       {{view Ember.TextField valueBinding="title"}}
       {{view Ember.TextArea valueBinding="body"}}
+      {{displayRemaining bodyRemaining}}
       <br>
       <button class="tiny radius" {{action "updateNote"}}>update</button>
     {{else}}
