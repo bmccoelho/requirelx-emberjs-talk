@@ -34,6 +34,7 @@
             </li>
           {{/each}}
         </ol>
+        {{link-to "new" "notes.new" class="tiny radius button"}}
       </div>
       <div class="medium-8 columns panel callout">
         {{outlet}}
@@ -42,12 +43,24 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="note">
-    <h4 class="subheader"> {{title}} </h4>
-    <blockquote>
-      <p> {{body}} </p>
-    </blockquote>
-    </ul>
+    {{#if isEditing}}
+      {{view Ember.TextField valueBinding="title"}}
+      {{view Ember.TextArea valueBinding="body"}}
+      <br>
+      <button class="tiny radius" {{action "updateNote"}}>update</button>
+    {{else}}
+      <h4 class="subheader"> {{title}} </h4>
+      <blockquote>
+        <p> {{body}} </p>
+      </blockquote>
+      <button class="tiny radius" {{action "editNote"}}>edit</button>
+    {{/if}}
   </script>
 
+  <script type="text/x-handlebars" data-template-name="notes/new">
+    title: {{view Ember.TextField valueBinding="newTitle"}}
+    {{view Ember.TextArea valueBinding="newBody"}}
+    <button class="tiny radius" {{action "createNote"}}>create</button>
+  </script>
 </body>
 </html>

@@ -12,13 +12,45 @@ App.Note.FIXTURES = [
 ];
 
 App.Router.map(function() {
-  this.resource("notes", function() {
-    this.resource("note", { path: '/:note_id' })
+  this.resource('notes', function() {
+    this.resource('note', { path: '/:note_id' }),
+    this.route('new')
   });
 });
 
 App.NotesRoute = Ember.Route.extend({
   model: function() {
     return this.store.find('note');
+  }
+});
+
+App.NotesNewController = Ember.ObjectController.extend({
+  actions: {
+    createNote: function () {
+      var title = this.get('newTitle');
+      var body = this.get('newBody');
+
+      var note = this.store.createRecord('note', {
+        title: title,
+        body: body
+      });
+
+      this.set('newTitle', '');
+      this.set('newBody', '');
+
+      note.save();
+    }
+  }
+});
+
+App.NoteController = Ember.ObjectController.extend({
+  actions: {
+    editNote: function() {
+      this.set('isEditing', true);
+    },
+    updateNote: function () {
+      this.set('isEditing', false);
+      this.get('model').save();
+    }
   }
 });
