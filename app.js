@@ -12,8 +12,8 @@ App.Note.FIXTURES = [
 ];
 
 App.Router.map(function() {
-  this.resource("notes", function() {
-    this.resource("note", { path: '/:note_id' }),
+  this.resource('notes', function() {
+    this.resource('note', { path: '/:note_id' }),
     this.route("new")
   });
 });
@@ -27,11 +27,10 @@ App.NotesRoute = Ember.Route.extend({
 App.NotesNewController = Ember.ObjectController.extend({
   actions: {
     createNote: function () {
-      var title = this.get("newTitle");
-      var body = this.get("newBody");
-
       console.log("title: ", this);
       console.log("body: ", body);
+      var title = this.get('newTitle');
+      var body = this.get('newBody');
 
       var note = this.store.createRecord('note', {
         title: title,
